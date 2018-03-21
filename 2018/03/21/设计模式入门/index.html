@@ -99,23 +99,24 @@
 
 
 
-  <meta name="description" content="不定期更新学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="welljun">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="设计原则：  找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混到一起。 针对接口编程，而不是针对实现编程。 少用继承，多用组合。  策略模型（StrategyPattern）从设计鸭子说起，这里就有用到组合的思想。存在一个Duck类和两种行为flyBehavior和quackBehavior，后两者是接口。  Duck类  1234567891011121314151617">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式入门">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/设计模式入门/index.html">
 <meta property="og:site_name" content="welljun">
-<meta property="og:description" content="不定期更新学习笔记">
+<meta property="og:description" content="设计原则：  找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混到一起。 针对接口编程，而不是针对实现编程。 少用继承，多用组合。  策略模型（StrategyPattern）从设计鸭子说起，这里就有用到组合的思想。存在一个Duck类和两种行为flyBehavior和quackBehavior，后两者是接口。  Duck类  1234567891011121314151617">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-21T15:04:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="welljun">
-<meta name="twitter:description" content="不定期更新学习笔记">
+<meta name="twitter:title" content="设计模式入门">
+<meta name="twitter:description" content="设计原则：  找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混到一起。 针对接口编程，而不是针对实现编程。 少用继承，多用组合。  策略模型（StrategyPattern）从设计鸭子说起，这里就有用到组合的思想。存在一个Duck类和两种行为flyBehavior和quackBehavior，后两者是接口。  Duck类  1234567891011121314151617">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/设计模式入门/"/>
 
 
 
@@ -125,7 +126,7 @@
   };
 </script>
 
-  <title>welljun</title>
+  <title>设计模式入门 | welljun</title>
   
 
 
@@ -172,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,9 +271,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -305,9 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/设计模式入门/" itemprop="url">设计模式入门</a></h1>
+          <h1 class="post-title" itemprop="name headline">设计模式入门</h1>
         
 
         <div class="post-meta">
@@ -356,9 +354,7 @@
       
 
       
-        
-          
-            <p>设计原则：</p>
+        <p>设计原则：</p>
 <ul>
 <li>找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混到一起。</li>
 <li>针对接口编程，而不是针对实现编程。</li>
@@ -384,8 +380,6 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MiniDuckSimulator</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Duck mallard = <span class="keyword">new</span> MallardDuck();</span><br><span class="line">        mallard.performQuack();</span><br><span class="line">        mallard.performFly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
 
@@ -405,179 +399,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/Java并发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="welljun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welljun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/20/Java并发/" itemprop="url">Java并发</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T16:41:55+08:00">2018-03-20</time>
+              <a href="/2018/03/20/Java并发/" rel="next" title="Java并发">
+                <i class="fa fa-chevron-left"></i> Java并发
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>进程</strong>：程序的执行过程，持有资源（共享内存，文件）和线程。实现是操作系统通过周期性地将CPU从一个进程切换到另外一个进程。</p>
-<p><strong>线程</strong>：线程是系统中最小的执行单元</p>
-<p><strong>线程交流方式</strong>：互斥和同步</p>
-<p><strong>并行</strong>：多个cpu或者多台机器同时执行一段处理逻辑</p>
-<p><strong>并发</strong>：通过调度算法，让用户看上去同时执行，从性能上的角度来看，如果没有任务会阻塞，那么在单处理器上使用并发是没有意义的。</p>
-<p><strong>线程安全</strong>：指的是在并发的情况下，该代码经过多线程使用，线程的调度不影响任何结果。这个时候使用多线程，我们只需关注系统的的内存、cpu是否够用。反之，线程不安全就意味着线程的调度顺序会影响最终的结果，</p>
-<p><strong>同步</strong>：人为的调度和控制，保证共享资源的多线程访问成为线程安全，来保证结果的正确性</p>
-<h2 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h2><p>Java线程一共有七个状态，分别是新建（new），就绪（Runnable），运行中（running），睡眠（sleeping），阻塞（Blocked），等待（waiting），死亡（Dead/Terminated）</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fpje2fmjmyj30jc0cimz9.jpg" alt=""></p>
-<p><strong>新建</strong>：新创建一个线程对象</p>
-<p><strong>就绪</strong>：线程对象创建之后，其他线程调用了该方法的start()方法，该线程位于可运行线程池中，等待被线程调度选中分配cpu</p>
-<p><strong>运行中</strong>：可运行线程获得cpu后，执行代码片段</p>
-<p><strong>睡眠</strong>（TIMED_WAITING）：有等待时间的等待状态。</p>
-<p><strong>阻塞</strong>：指cpu因为某种原因放弃cpu使用权，暂时性地停止运行。直到线程进入可运行状态，才有机会获得cpu进入运行状态。</p>
-<p><strong>等待</strong>：执行wait方法后进入</p>
-<p><strong>死亡</strong>：线程的run()、main()方法执行完毕后，或者因为异常结束生命周期</p>
-<h2 id="基本的线程机制"><a href="#基本的线程机制" class="headerlink" title="基本的线程机制"></a>基本的线程机制</h2><h3 id="定义任务"><a href="#定义任务" class="headerlink" title="定义任务"></a>定义任务</h3><p>线程可以驱动任务， 因此你需要一种描述任务的方式，这需要实现Runnable接口并编写run()方法。</p>
-<p>run方法通常是会有某种形式的循环，使得任务一直循环下去直到不需要。</p>
-<p>如下方火箭发射的run方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(countDown-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        System.out.print(RocketStatus);</span><br><span class="line">        Thread.yield();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中run对静态方法yield()的调用是对<strong>线程调度器</strong>的一种建议：<strong>表明我已经执行完生命周期最重要的一部分了，此刻正是切换到其他任务的大好时机</strong>。这在上例代码中是选择性地。</p>
-<blockquote>
-<p>run方法不具有任何内在的线程能力。需要实现线程行为，必须显式地将一个任务附着到线程中。</p>
-</blockquote>
-<h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><p>下面示例展示使用Thread来驱动LiftOff任务对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicThread</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> LiftOff());</span><br><span class="line">        t.start();</span><br><span class="line">        System.out.println(<span class="string">"Waiting for LiftOff"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里只需要一个Runnable对象就可以创建Thread，再调用Thread中的start()方法启动该任务，实际上这里是调用了LiftOff.run()方法，这里实际上是同时运行两个线程，还有一个是main()线程，因此在这里实际上是先打印出了<code>Waiting for LiftOFF</code>，然后再打印出发射倒计时。</p>
-<p>一个线程会创建一个单独的执行线程，在对start()调用结束之后，它仍会继续存在。</p>
-<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p>执行器（Executor）可以管理Thread对象，在任务端和客户执行间创建一个间接层，替你处理线程的创建和处理。由中介对象执行任务。用Executor来修改上面例子。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CachedThreadPool</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//ExecutorService具有时间周期</span></span><br><span class="line">        <span class="comment">//CachedThreadpool将会为每个任务创建一个线程</span></span><br><span class="line">        ExecutorService exec = Executors.newCachedThreadpool();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)&#123;</span><br><span class="line">            exec.execute(<span class="keyword">new</span> LiftOff());</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//shutdown方法是防止新任务被提交给这个Executor</span></span><br><span class="line">        exec.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里还可以使用<code>FixedThreadpoo</code>来固定使用的线程数目，需要线程的事件处理器，通过直接从池中获取线程。</p>
-<h3 id="从任务中产生返回值"><a href="#从任务中产生返回值" class="headerlink" title="从任务中产生返回值"></a>从任务中产生返回值</h3><p>实现Callable接口，这是一个具有类型参数的泛型。它的类型参数表示的是从方法call()中返回的值。</p>
-<h3 id="休眠"><a href="#休眠" class="headerlink" title="休眠"></a>休眠</h3><p>执行sleep()使任务终止执行制定的时间</p>
-<p>可以使用更加显式的版本<code>TimeUnit.MILLISECONDS.sleep(time)</code>，这允许指定时间单元，提供更好的可阅读性。</p>
-<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>调度器倾向与让优先级高的线程先执行，但是优先级较低的只是执行的频率低，并不意味着不执行</p>
-<p>可以在任务内部调用<code>Thread.currentThread()</code>来获得驱动该任务的Thread对象的引用</p>
-<blockquote>
-<p><strong>让步</strong>：通过调用yield()来建议运行其他具有相同优先级的线程</p>
-</blockquote>
-<h3 id="后台线程"><a href="#后台线程" class="headerlink" title="后台线程"></a>后台线程</h3><p>是指程序运行的时候再后台提供一种通用服务的线程。当所有<strong>非后台程序</strong>结束的时候，程序也就会终结。</p>
-<p><code>setDaemon()</code>设置后台线程</p>
-<p>后台创建的线程会自动被设置成后台线程</p>
-<h3 id="加入一个线程"><a href="#加入一个线程" class="headerlink" title="加入一个线程"></a>加入一个线程</h3><p>一个线程可以在其他线程上调用join()方法，其效果是等待一段时间直到第二个线程结束才继续执行。</p>
-<p>join方法也可以被中断，做法是在调用线程上调用interrupt()方法，这时需要调用try-catch子句。</p>
-<h3 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h3>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -587,146 +430,19 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="welljun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welljun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T08:30:20+08:00">2018-03-18</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -747,8 +463,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -793,6 +518,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模型（StrategyPattern）"><span class="nav-number">1.</span> <span class="nav-text">策略模型（StrategyPattern）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -920,6 +661,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
 
   
 
