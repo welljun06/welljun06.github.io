@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="welljun&#39;s blog">
 <meta property="og:description" content="基础概念一个分布式数据库，存储一个不断加长的list，list中包含许多有序的记录。 块结构块结构信息：索引，时间戳，数据，哈希值，前置哈希值 哈希值概念：哈希值就是文件的身份证。是根据文件大小、类型、时间、创作者、机器等计算出来的，很容易就改变，不容易计算出来，且无法预料。 在信息最后添加一个特殊数字，对整个列表使用SHA256，使得最后生成的值的开头有n个零。而找到这个数字的唯一办法就是穷举。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T14:49:01.000Z">
+<meta property="og:updated_time" content="2018-04-17T09:19:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链入门">
 <meta name="twitter:description" content="基础概念一个分布式数据库，存储一个不断加长的list，list中包含许多有序的记录。 块结构块结构信息：索引，时间戳，数据，哈希值，前置哈希值 哈希值概念：哈希值就是文件的身份证。是根据文件大小、类型、时间、创作者、机器等计算出来的，很容易就改变，不容易计算出来，且无法预料。 在信息最后添加一个特殊数字，对整个列表使用SHA256，使得最后生成的值的开头有n个零。而找到这个数字的唯一办法就是穷举。">
@@ -382,6 +382,12 @@
 <h2 id="块结构"><a href="#块结构" class="headerlink" title="块结构"></a>块结构</h2><p>块结构信息：索引，时间戳，数据，哈希值，前置哈希值</p>
 <p>哈希值概念：哈希值就是文件的身份证。是根据文件大小、类型、时间、创作者、机器等计算出来的，很容易就改变，不容易计算出来，且无法预料。</p>
 <p>在信息最后添加一个特殊数字，对整个列表使用SHA256，使得最后生成的值的开头有n个零。而找到这个数字的唯一办法就是穷举。这个特殊数字就叫做工作量证明。</p>
+<p>设计思路：</p>
+<ol>
+<li>新建块，传入块的索引值，内容，和前一个块的哈希值</li>
+<li>计算当前块的哈希值，根据前一个块的哈希值，时间戳，工作量证明和数据算出有n个零的值</li>
+<li>将当前区块加入链中</li>
+</ol>
 
       
     </div>
@@ -495,7 +501,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -514,7 +520,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -539,7 +547,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
