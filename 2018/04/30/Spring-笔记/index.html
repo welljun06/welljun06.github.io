@@ -99,24 +99,24 @@
 
 
 
-  <meta name="description" content="特点生存期为整个源程序 static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。">
+  <meta name="description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 单元测试 需要用到junit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 静态变量">
-<meta property="og:url" content="http://yoursite.com/2018/04/01/Java-静态变量/index.html">
+<meta property="og:title" content="Spring 笔记">
+<meta property="og:url" content="http://yoursite.com/2018/04/30/Spring-笔记/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
-<meta property="og:description" content="特点生存期为整个源程序 static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。">
+<meta property="og:description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 单元测试 需要用到junit">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-01T03:07:46.000Z">
+<meta property="og:updated_time" content="2018-05-02T03:09:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 静态变量">
-<meta name="twitter:description" content="特点生存期为整个源程序 static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。">
+<meta name="twitter:title" content="Spring 笔记">
+<meta name="twitter:description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 单元测试 需要用到junit">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/01/Java-静态变量/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/30/Spring-笔记/"/>
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Java 静态变量 | welljun's blog</title>
+  <title>Spring 笔记 | welljun's blog</title>
   
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Java-静态变量/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/30/Spring-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="welljun">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java 静态变量</h1>
+          <h1 class="post-title" itemprop="name headline">Spring 笔记</h1>
         
 
         <div class="post-meta">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T11:01:39+08:00">2018-04-01</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-30T21:04:14+08:00">2018-04-30</time>
             
 
             
@@ -378,8 +378,66 @@
       
 
       
-        <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>生存期为整个源程序</p>
-<p>static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;<br>static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；<br>static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上</li>
+<li>是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架</li>
+</ul>
+<h2 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h2><p>控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。</p>
+<p><strong>DI(依赖注入)</strong>是其中的一种表现形式，目的是为了创建对象并组织对象的关系，</p>
+<p>依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。</p>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><ul>
+<li>需要用到junit类</li>
+<li>创建UnitTestBase类，完成对Spring配置文件的加载和销毁</li>
+<li>所有的单元测试类都继承自UnitTestBase，通过他的getBean方法获取需要的类</li>
+<li>子类(具体执行单元测试的类)需要添加注解(@RunWith)</li>
+<li>单元测试的方法添加注解:@Test</li>
+</ul>
+<h3 id="Spring注入"><a href="#Spring注入" class="headerlink" title="Spring注入"></a>Spring注入</h3><p>是指在启动Spring容器加载bean配置的时候，完成对变量的赋值行为</p>
+<ul>
+<li>设值注入：相当于set方法（需要在类中实现set方法）</li>
+<li>构建注入：相当于构建函数（需要实现构造方法）</li>
+</ul>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h2><h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><ul>
+<li>在XML中进行显性配置</li>
+<li>在Java中进行显性配置</li>
+<li>隐式的bean发现机制和自动装配</li>
+</ul>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>singleton：单例，指一个Bean容器中只存在一份</p>
+<p>prototype：每次请求都会创建新的实例，destory方法不生效</p>
+<p>request：在每次request请求中生成实例，且仅在当前request中有效</p>
+<p>session：和request类似</p>
+<p>globalsession：基于web中的portlet有效</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>配置初始化和结束方法</p>
+<ul>
+<li>继承方法</li>
+<li>设置配置文件</li>
+<li>设置默认方法</li>
+</ul>
+<h3 id="Aware"><a href="#Aware" class="headerlink" title="Aware"></a>Aware</h3><p>容器管理的Bean一般不需要了解容器的状态和直接使用容器，但是在某些情况下，是需要在Bean中直接对IOC容器进行操作的，这时候，就需要在Bean中设定对容器的感知。Spring IOC容器也提供了该功能，它是通过特定的Aware接口来完成的。</p>
+<h3 id="自动装配-Autowiring"><a href="#自动装配-Autowiring" class="headerlink" title="自动装配(Autowiring)"></a>自动装配(Autowiring)</h3><p>byname：根据属性自动装配</p>
+<p>byType：如果容器中存在一个与指定类型相同的bean，那么将与该属性自动装配；如果存在多个该类型的bean，那么则将抛出异常，并指出不能使用bytype方式进行装配，如果没有匹配到相匹配的bean，则什么事都不会发生</p>
+<p>constructor：与byType相似，不同之处是在于使用构造器实现。如果容器中没有找到与构造器参数类型一致的bean，则抛出异常。</p>
+<p>首先使用@Component注解表明该类为组件类，接着显示配置Spring，命令它去寻找带有@Component注解的类</p>
+<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><ul>
+<li>classPath</li>
+<li>file</li>
+<li>http</li>
+</ul>
+<h3 id="Bean管理的注解"><a href="#Bean管理的注解" class="headerlink" title="Bean管理的注解"></a>Bean管理的注解</h3><p>从Spring3.0开始可以通过Java的注解来定义bean而不用通过xml来配置</p>
+<p>你只需要在xml里配置一个注解扫描器，把你的包名一填，然后就可以有三种方法配置bean</p>
+<p>1、直接在private成员变量上加autowired的注解</p>
+<p>2、写个seter方法，加上autowired注解</p>
+<p>3、写个构造器，加上autowired注解</p>
+<h4 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h4><ul>
+<li>按类型自动装配可能有多个bean实例的情况，可以使用Spring的qualifier注解缩小范围，也可以用于指定单独的构造器参数或者方法参数</li>
+<li>可用于注解集合类型变量 </li>
+</ul>
+<p>与@Autowried结合使用注入特定的类</p>
+<h4 id="Bean-1"><a href="#Bean-1" class="headerlink" title="@Bean"></a>@Bean</h4><ul>
+<li>用于标识一个用于配置和初始化一个由SpringIoC容器管理的新对象的方法，类似与XML配置文件的<bean></bean></li>
+<li>可以在Spring中的@Component注解的类中使用@bean注解</li>
+<li>上一点中常常使用的是@configuration</li>
+</ul>
 
       
     </div>
@@ -407,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/28/区块链入门/" rel="next" title="区块链入门">
-                <i class="fa fa-chevron-left"></i> 区块链入门
+              <a href="/2018/04/27/书籍管理系统/" rel="next" title="书籍管理系统">
+                <i class="fa fa-chevron-left"></i> 书籍管理系统
               </a>
             
           </div>
@@ -416,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/04/Linux-进程同步与通信/" rel="prev" title="Linux 进程同步与通信">
-                Linux 进程同步与通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC"><span class="nav-number">2.</span> <span class="nav-text">IoC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试"><span class="nav-number">2.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring注入"><span class="nav-number">2.2.</span> <span class="nav-text">Spring注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">3.</span> <span class="nav-text">Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置方式"><span class="nav-number">3.1.</span> <span class="nav-text">配置方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">3.2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">3.3.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aware"><span class="nav-number">3.4.</span> <span class="nav-text">Aware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动装配-Autowiring"><span class="nav-number">3.5.</span> <span class="nav-text">自动装配(Autowiring)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">3.6.</span> <span class="nav-text">Resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean管理的注解"><span class="nav-number">3.7.</span> <span class="nav-text">Bean管理的注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Qualifier"><span class="nav-number">3.7.1.</span> <span class="nav-text">@Qualifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean-1"><span class="nav-number">3.7.2.</span> <span class="nav-text">@Bean</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

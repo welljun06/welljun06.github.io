@@ -99,24 +99,24 @@
 
 
 
-  <meta name="description" content="特点生存期为整个源程序 static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。">
+  <meta name="description" content="SpringBoot、SpringMVC、Spring的关系Spring可以说是一个管理bean的容器，SpringMVC是其中的一个开源项目。 Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。 Spring Boot不是一门新技术。从本质上来说，Spring Boot就是Spring，它做了一些对Spring Bean的默认配置。 SpringBoot优点 化简为繁，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 静态变量">
-<meta property="og:url" content="http://yoursite.com/2018/04/01/Java-静态变量/index.html">
+<meta property="og:title" content="SpringBoot笔记">
+<meta property="og:url" content="http://yoursite.com/2018/04/27/SpringBoot笔记/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
-<meta property="og:description" content="特点生存期为整个源程序 static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。">
+<meta property="og:description" content="SpringBoot、SpringMVC、Spring的关系Spring可以说是一个管理bean的容器，SpringMVC是其中的一个开源项目。 Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。 Spring Boot不是一门新技术。从本质上来说，Spring Boot就是Spring，它做了一些对Spring Bean的默认配置。 SpringBoot优点 化简为繁，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-01T03:07:46.000Z">
+<meta property="og:updated_time" content="2018-05-03T08:08:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 静态变量">
-<meta name="twitter:description" content="特点生存期为整个源程序 static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。">
+<meta name="twitter:title" content="SpringBoot笔记">
+<meta name="twitter:description" content="SpringBoot、SpringMVC、Spring的关系Spring可以说是一个管理bean的容器，SpringMVC是其中的一个开源项目。 Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。 Spring Boot不是一门新技术。从本质上来说，Spring Boot就是Spring，它做了一些对Spring Bean的默认配置。 SpringBoot优点 化简为繁，">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/01/Java-静态变量/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/27/SpringBoot笔记/"/>
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Java 静态变量 | welljun's blog</title>
+  <title>SpringBoot笔记 | welljun's blog</title>
   
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Java-静态变量/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/27/SpringBoot笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="welljun">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java 静态变量</h1>
+          <h1 class="post-title" itemprop="name headline">SpringBoot笔记</h1>
         
 
         <div class="post-meta">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T11:01:39+08:00">2018-04-01</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-27T11:10:39+08:00">2018-04-27</time>
             
 
             
@@ -378,9 +378,41 @@
       
 
       
-        <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>生存期为整个源程序</p>
-<p>static全局变量与普通的全局变量有什么区别：static全局变量只初使化一次，防止在其他文件单元中被引用;<br>static局部变量和普通局部变量有什么区别：static局部变量只被初始化一次，下一次依据上一次结果值；<br>static函数与普通函数有什么区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝。</p>
-
+        <h2 id="SpringBoot、SpringMVC、Spring的关系"><a href="#SpringBoot、SpringMVC、Spring的关系" class="headerlink" title="SpringBoot、SpringMVC、Spring的关系"></a>SpringBoot、SpringMVC、Spring的关系</h2><p>Spring可以说是一个管理bean的容器，SpringMVC是其中的一个开源项目。</p>
+<p>Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。</p>
+<p>Spring Boot不是一门新技术。从本质上来说，Spring Boot就是Spring，它做了一些对Spring Bean的默认配置。</p>
+<h2 id="SpringBoot优点"><a href="#SpringBoot优点" class="headerlink" title="SpringBoot优点"></a>SpringBoot优点</h2><ul>
+<li>化简为繁，简化配置</li>
+<li>微服务的入门级框架</li>
+</ul>
+<h2 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h2><ul>
+<li>直接在idea启动</li>
+<li>通过到项目文件夹使用 <code>mvn spring-boot:run</code>启动</li>
+<li>在项目目录直接使用<code>mvn install</code>打包项目后使用<code>java -jar</code>执行target目录下的jar包</li>
+</ul>
+<h2 id="属性配置"><a href="#属性配置" class="headerlink" title="属性配置"></a>属性配置</h2><p>@Value</p>
+<p>实现配置内容的注入</p>
+<p>@Component</p>
+<p>@ConfigurationProperties</p>
+<p>@Autowried</p>
+<p>当属性变多后，可以一次导入，只需要创建一个properties类，注解@Component，将属性通过ConfigurationProperties中的prefix导入，再通过@Autowried注入。</p>
+<h2 id="控制器的使用"><a href="#控制器的使用" class="headerlink" title="控制器的使用"></a>控制器的使用</h2><p>@Contorller：处理http请求</p>
+<p>@RestController：返回json</p>
+<p>@RequestMapping：配置url映射，如果使用get方法，可以使用@GetMapping简化，POST也是类似</p>
+<p>@PathVariable：获取路径中的参数</p>
+<p>@RequestParam：获取url中的参数</p>
+<p> spring data jpa 是spring对hibernate的封装；优点是不需要写sql，适合简单的管理系统类型的项目，缺点也是不写sql ，做复杂的互联网项目时 还是 springboot+mybatis好用。</p>
+<h2 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h2><p>相当于回滚，添加在service层的方法中 </p>
+<p>两条 sql 语句同时在一个方法中执行，为了防止一个 sql 语句执行成功而另一个 sql 语句执行失败，引入了事务管理，需要在方法上加 <code>@Transactional</code>事务注解</p>
+<blockquote>
+<p>事务确保了数据库数据的完整性和一致性</p>
+</blockquote>
+<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><ul>
+<li>在需要验证的属性上添加@Min标签并配置value和message属性</li>
+<li>在Controller层的方法参数前添加@valid标签， 添加BindingResult属性</li>
+<li>判断BindingResult中的hasErrors方法，然后通过bindingResult.getFieldError().getDefaultMessage()输出之前设定的错误信息</li>
+</ul>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2>
       
     </div>
 
@@ -407,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/28/区块链入门/" rel="next" title="区块链入门">
-                <i class="fa fa-chevron-left"></i> 区块链入门
+              <a href="/2018/04/25/Docker-笔记/" rel="next" title="Docker 笔记">
+                <i class="fa fa-chevron-left"></i> Docker 笔记
               </a>
             
           </div>
@@ -417,8 +449,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/04/Linux-进程同步与通信/" rel="prev" title="Linux 进程同步与通信">
-                Linux 进程同步与通信 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/27/Maven笔记/" rel="prev" title="Maven笔记">
+                Maven笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -583,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot、SpringMVC、Spring的关系"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot、SpringMVC、Spring的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot优点"><span class="nav-number">2.</span> <span class="nav-text">SpringBoot优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动方式"><span class="nav-number">3.</span> <span class="nav-text">启动方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性配置"><span class="nav-number">4.</span> <span class="nav-text">属性配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器的使用"><span class="nav-number">5.</span> <span class="nav-text">控制器的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务管理"><span class="nav-number">6.</span> <span class="nav-text">事务管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单验证"><span class="nav-number">7.</span> <span class="nav-text">表单验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP"><span class="nav-number">8.</span> <span class="nav-text">AOP</span></a></li></ol></div>
             
 
           </div>
