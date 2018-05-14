@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="welljun&#39;s blog">
 <meta property="og:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T10:24:30.000Z">
+<meta property="og:updated_time" content="2018-05-09T13:12:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 笔记">
 <meta name="twitter:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
@@ -387,7 +387,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:	18.03.0-ce</span><br><span class="line"> API version:	1.37</span><br><span class="line"> Go version:	go1.9.4</span><br><span class="line"> Git commit:	0520e24</span><br><span class="line"> Built:	Wed Mar 21 23:06:22 2018</span><br><span class="line"> OS/Arch:	darwin/amd64</span><br><span class="line"> Experimental:	false</span><br><span class="line"> Orchestrator:	swarm</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:	18.03.0-ce</span><br><span class="line">  API version:	1.37 (minimum version 1.12)</span><br><span class="line">  Go version:	go1.9.4</span><br><span class="line">  Git commit:	0520e24</span><br><span class="line">  Built:	Wed Mar 21 23:14:32 2018</span><br><span class="line">  OS/Arch:	linux/amd64</span><br><span class="line">  Experimental:	true</span><br></pre></td></tr></table></figure>
 <p>使用<code>docker pull centos</code>从官方注册服务器的仓库中pull下CentOS的镜像。（默认是latest镜像），然后使用<code>docker images</code>查看镜像信息。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              e934aafc2206        2 weeks ago         199MB</span><br></pre></td></tr></table></figure>
-<p>通过<code>docker run -it -rm centos:latest /bin/bash</code>来启动容器==&gt;利用commit提交更新后的副本。</p>
+<p>通过<code>docker run -it --rm centos:latest /bin/bash</code>来启动容器==&gt;利用commit提交更新后的副本。</p>
 <ul>
 <li>-it：需要交互式终端，-rm：容器退出后随之删除 /bin/bash：希望启动bash</li>
 </ul>
@@ -539,7 +539,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -564,7 +564,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -599,7 +601,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
