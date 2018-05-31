@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 笔记">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/Docker-笔记/index.html">
+<meta property="og:site_name" content="welljun&#39;s blog">
+<meta property="og:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-27T06:53:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 笔记">
+<meta name="twitter:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/25/Docker-笔记/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Docker 笔记 | welljun's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welljun's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/Docker-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="welljun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welljun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker 笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T22:10:54+08:00">2018-04-25</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。</li>
+<li>容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。</li>
+<li>仓库：镜像仓库，Docker存储镜像文件的地方。</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装完dmg文件后，使用<code>docker -version</code>查看Docker的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:	18.03.0-ce</span><br><span class="line"> API version:	1.37</span><br><span class="line"> Go version:	go1.9.4</span><br><span class="line"> Git commit:	0520e24</span><br><span class="line"> Built:	Wed Mar 21 23:06:22 2018</span><br><span class="line"> OS/Arch:	darwin/amd64</span><br><span class="line"> Experimental:	false</span><br><span class="line"> Orchestrator:	swarm</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:	18.03.0-ce</span><br><span class="line">  API version:	1.37 (minimum version 1.12)</span><br><span class="line">  Go version:	go1.9.4</span><br><span class="line">  Git commit:	0520e24</span><br><span class="line">  Built:	Wed Mar 21 23:14:32 2018</span><br><span class="line">  OS/Arch:	linux/amd64</span><br><span class="line">  Experimental:	true</span><br></pre></td></tr></table></figure>
+<p>使用<code>docker pull centos</code>从官方注册服务器的仓库中pull下CentOS的镜像。（默认是latest镜像），然后使用<code>docker images</code>查看镜像信息。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              e934aafc2206        2 weeks ago         199MB</span><br></pre></td></tr></table></figure>
+<p>通过<code>docker run -it --rm centos:latest /bin/bash</code>来启动容器==&gt;利用commit提交更新后的副本。</p>
+<ul>
+<li>-it：需要交互式终端，-rm：容器退出后随之删除 /bin/bash：希望启动bash</li>
+</ul>
+<p>使用<code>yum install git</code>安装git，使用<code>cat /etc/os-release</code>查看系统信息。</p>
+<p>退出容器使用exit</p>
+<p>列出所有正在运行的容器（包括终止运行的容器）：<code>docker container ls -all</code></p>
+<p>终止运行指令：<code>docker container kill</code></p>
+<p>删除硬盘空间：<code>docker container rm</code></p>
+<h3 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h3><ol>
+<li><p>通过<code>docker run -it --rm centos:latest /bin/bash</code>来启动容器==&gt;利用commit提交更新后的副本。</p>
+<p>在启动容器后使用<code>docker ps -a</code>查看容器id，再使用commit提交更改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">bfcf2f55b328        centos:latest       "bash"              21 minutes ago      Up 21 minutes                           zen_kapitsa</span><br><span class="line">➜  ~ git:(master) ✗ docker commit -m "centos with git" -a "welljun06" bfcf2f55b328 welljun06/centos:git</span><br><span class="line">sha256:a8cbb4814b42a3bc627f9fd909c1d62faee79334f59d64f0bd1f9c69028695be</span><br></pre></td></tr></table></figure>
+<p>-m：说明信息  -a：用户信息  welljun06/centos:git：表示目标镜像的用户名、仓库名还有tag信息。</p>
+<p>查看当前的镜像信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED                  SIZE</span><br><span class="line">welljun06/centos    git                 a8cbb4814b42        Less than a second ago   355MB</span><br><span class="line">centos              latest              e934aafc2206        2 weeks ago              199MB</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用dockerfile创建镜像</p>
+<p>dockerfile是一种配置文件，告诉docker build命令应该执行什么操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 镜像基于版本</span><br><span class="line">FROM centos:lastest</span><br><span class="line"><span class="meta">#</span> 构建者的基本信息</span><br><span class="line">MAINTAINER welljun06</span><br><span class="line"><span class="meta">#</span> 在build镜像时执行的操作</span><br><span class="line">RUN yum update</span><br><span class="line">RUN yum install -y git</span><br><span class="line"><span class="meta">#</span> 拷贝本地镜像到文件中</span><br><span class="line">COPY ./* /user/share/gitdir/</span><br></pre></td></tr></table></figure>
+<p>然后使用<code>docker build -t=&quot;welljun06/centos:gitdir&quot; .</code>来创建镜像，其中-t包含的信息为用户信息和tag，后面的<code>.</code>表示在当前目录寻找Dockerfile文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  docker git:(master) ✗ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE</span><br><span class="line">welljun06/centos    gitdir              545ebb09398d        About a minute ago   457MB</span><br><span class="line">welljun06/centos    git                 a8cbb4814b42        31 minutes ago       355MB</span><br><span class="line">centos              latest              e934aafc2206        2 weeks ago          199MB管理镜像</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="管理镜像"><a href="#管理镜像" class="headerlink" title="管理镜像"></a>管理镜像</h3><p>删除容器或者是镜像：<code>docker rm container_name/container_id</code> <code>docker rmi image_name/image_id</code></p>
+<p>保存镜像：<code>docker save -o centos.tar welljun06/centos:git</code></p>
+<p>加载镜像：<code>docker load -i centos.tar</code></p>
+<h3 id="容器的其他操作"><a href="#容器的其他操作" class="headerlink" title="容器的其他操作"></a>容器的其他操作</h3><p>将当前容器设置在后台运行：按下快捷键<code>ctrl+p ctrl+q</code></p>
+<p>设置容器后台启动：-d（此时所有的stdout会输出至log中，可以使用<code>docker logs container_id</code>查看）</p>
+<p>启动重启停止命令：start、restart、stop</p>
+<p>重新进入后台系统：attach</p>
+<p>如果在run的时候没有添加-it参数，需要进入shell时：<code>docker container exec</code></p>
+<p>将文件从容器拷贝到本机：<code>docker container cp [containID]:[/path/to/file] .</code></p>
+<h3 id="仓库的基本操作"><a href="#仓库的基本操作" class="headerlink" title="仓库的基本操作"></a>仓库的基本操作</h3><p>将自己的镜像发布到DockerHub上</p>
+<ul>
+<li>先通过<code>docker login</code>登录</li>
+<li>通过<code>docker push welljun06/centos:git</code>将本地镜像推送到DockerHub上</li>
+</ul>
+<p>镜像更新也有两种方法，一种是<strong>下载修改后commit</strong>，一种是<strong>更新dockerfile文件</strong>，一般推荐第二种。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/16/登录验证码设计/" rel="next" title="登录验证码设计">
+                <i class="fa fa-chevron-left"></i> 登录验证码设计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/27/SpringBoot笔记/" rel="prev" title="SpringBoot笔记">
+                SpringBoot笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">welljun</p>
+              <p class="site-description motion-element" itemprop="description">不定期更新学习笔记</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作镜像"><span class="nav-number">3.</span> <span class="nav-text">制作镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理镜像"><span class="nav-number">4.</span> <span class="nav-text">管理镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器的其他操作"><span class="nav-number">5.</span> <span class="nav-text">容器的其他操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库的基本操作"><span class="nav-number">6.</span> <span class="nav-text">仓库的基本操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">welljun</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

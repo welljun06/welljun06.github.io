@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="命令行版git 为分布式版本管理系统  先进行Git全局设置 12git config --global user.name &quot;&quot;git config --global user.email &quot;&quot; 创建 git 仓库 1234567mkdir uppro &amp;amp;&amp;amp; cd upprogit inittouch README.md // 规范git add README.md // 添加到">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 使用笔记">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/Git-使用笔记/index.html">
+<meta property="og:site_name" content="welljun&#39;s blog">
+<meta property="og:description" content="命令行版git 为分布式版本管理系统  先进行Git全局设置 12git config --global user.name &quot;&quot;git config --global user.email &quot;&quot; 创建 git 仓库 1234567mkdir uppro &amp;amp;&amp;amp; cd upprogit inittouch README.md // 规范git add README.md // 添加到">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-20T09:35:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git 使用笔记">
+<meta name="twitter:description" content="命令行版git 为分布式版本管理系统  先进行Git全局设置 12git config --global user.name &quot;&quot;git config --global user.email &quot;&quot; 创建 git 仓库 1234567mkdir uppro &amp;amp;&amp;amp; cd upprogit inittouch README.md // 规范git add README.md // 添加到">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/Git-使用笔记/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Git 使用笔记 | welljun's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">welljun's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/Git-使用笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="welljun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="welljun's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git 使用笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-20T11:23:39+08:00">2018-05-20</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="命令行版"><a href="#命令行版" class="headerlink" title="命令行版"></a>命令行版</h3><p>git 为分布式版本管理系统 </p>
+<p>先进行Git全局设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name ""</span><br><span class="line">git config --global user.email ""</span><br></pre></td></tr></table></figure>
+<p>创建 git 仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir uppro &amp;&amp; cd uppro</span><br><span class="line">git init</span><br><span class="line">touch README.md // 规范</span><br><span class="line">git add README.md // 添加到缓冲池</span><br><span class="line">git commit -m "first commit" // 提交到本地仓库</span><br><span class="line">git remote add origin http://...git // 添加远程仓库</span><br><span class="line">git push -u origin master // 提交到远程分支中</span><br></pre></td></tr></table></figure>
+<p>如果项目存在，只需在添加远程仓库开始即可。</p>
+<p>通过 git init 将目录变成 git 管理的目录，此时目录下会出现 .git 文件夹，里面会存储版本管理文件 </p>
+<p>文件格式：需要使用纯文本编辑的文件才能追踪变化 </p>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li>先创建文件 </li>
+<li>通过 <code>git add &lt;file&gt;</code>将文件添加到仓库 </li>
+<li>通过 <code>git commit -m &quot;&lt;说明&gt;&quot;</code>将文件提交到仓库 </li>
+</ol>
+<p>解释 <code>git commit</code> 参数： </p>
+<p><code>-m</code>：后面输入的是本次提交的说明 </p>
+<p><code>git status</code>: 查看当前仓库状态 </p>
+<p><code>git diff</code>: 查看difference </p>
+<h4 id="版本回退："><a href="#版本回退：" class="headerlink" title="版本回退："></a>版本回退：</h4><p><code>git log</code>: 显示从最近到最远的提交日志 </p>
+<p><code>git reset --hard HEAD^</code>: 回退到上个commit版本，其中<code>HEAD^</code>表示上个版本，如果想找回最新的版本，只能通过之前保留的<code>commitId</code>（只需前几位）进行恢复 </p>
+<h4 id="工作区和暂存区："><a href="#工作区和暂存区：" class="headerlink" title="工作区和暂存区："></a>工作区和暂存区：</h4><p>工作区：电脑中能看到的目录 </p>
+<p>版本库：<code>.git</code>文件夹，里面存有暂存区，需要提交的文件通通放到暂存区，然后一次性提交暂存区的文件，每次修改需要add到暂存区后再<code>commit</code> </p>
+<h4 id="撤销修改："><a href="#撤销修改：" class="headerlink" title="撤销修改："></a>撤销修改：</h4><p><code>git checkout -- &lt;file&gt;</code>: 使用指令丢掉缓冲区的修改，也可以丢掉工作区的修改 </p>
+<p>这里会存在两种情况： </p>
+<ol>
+<li>一种是文件还没有被add到暂存区，现在撤销修改就会回到和版本库一样的状态 </li>
+<li>一种是文件已经被添加到暂存区后，又做了修改，撤销修改就会回到add到暂存区的状态 </li>
+</ol>
+<p><code>git reset HEAD &lt;file&gt;</code>: 该命令既可以回退版本，也可以把暂存区的修改撤销掉，重新放回工作区 </p>
+<h4 id="删除文件："><a href="#删除文件：" class="headerlink" title="删除文件："></a>删除文件：</h4><p>假如有一个文件被add而且commit后，在本地删除了该文件。此时工作区和版本库不一样，通过git status查看后可以发现文件被删除 </p>
+<ol>
+<li>如果选择删除文件，可以使用<code>git rm &lt;file&gt;</code>后commit </li>
+<li>如果是误删文件，可使用git ch<code>eckout --&lt;file&gt;</code>恢复，因为该命令实际上是用版本库的版本替换工作区的版本，无论是工作区删除还是修改。 </li>
+</ol>
+<h4 id="添加远程仓库："><a href="#添加远程仓库：" class="headerlink" title="添加远程仓库："></a>添加远程仓库：</h4><p>本地git和github仓库之间的传输是通过ssh加密的 </p>
+<p>第一次将本地仓库推送到远程，需要先将本地仓库与远程仓库关联<code>git remote add origin</code> <code>git@&lt;username&gt;/&lt;categories&gt;.git</code> </p>
+<p>使用<code>git push -u origin master</code>，origin为远程仓库名，git会把本地的master分支内容推送到远程的新的master分支，还会把远程的master分支和本地的master关联起来，以后修改只需通过<code>git push origin master</code>就可以将内容推送到服务器上 </p>
+<h4 id="从远程仓库克隆："><a href="#从远程仓库克隆：" class="headerlink" title="从远程仓库克隆："></a>从远程仓库克隆：</h4><p>先有远程仓库的话直接使用git clone命令克隆，或者使用ssh链接克隆策略 </p>
+<h4 id="分支管理："><a href="#分支管理：" class="headerlink" title="分支管理："></a>分支管理：</h4><p><code>git checkout -b &lt;name&gt;</code>: 创建分支名，其中-b表示新建并切换 </p>
+<p><code>git branch</code>: 查看当前分支 </p>
+<p><code>git merge &lt;branch&gt;</code>: 合并指定分支到当前分支  </p>
+<p><code>git branch -d &lt;branch&gt;</code>: 删除指定分支 </p>
+<h4 id="解决合并冲突："><a href="#解决合并冲突：" class="headerlink" title="解决合并冲突："></a>解决合并冲突：</h4><p>当git无法自动合并分支的时候，首先要解决冲突，再提交，合并完成。 </p>
+<p>还可以使用<code>git -log --graph</code>查看分支合并图 </p>
+<h4 id="分支管理策略："><a href="#分支管理策略：" class="headerlink" title="分支管理策略："></a>分支管理策略：</h4><p>使用<code>--no-ff</code>禁用fast forword，Git会在merge的时候生成一个新的commit，这样在分支历史中就可以看到分支信息。 </p>
+<p>一般在dev分支干活，master分支是非常稳定的，然后每个人在dev分支上再分自己的工作流 </p>
+<h4 id="Bug分支："><a href="#Bug分支：" class="headerlink" title="Bug分支："></a>Bug分支：</h4><p>git stash: 在开发中，假如遇到需要紧急修复bug的时候，此时没有办法提交的时候，可以使用此命令将工作现场存储起来，等以后恢复现场的时候再继续工作 </p>
+<p>在时候git stash后使用git status查看工作区可以发现此时工作区是空的，此时就可以切换回出现bug的分支，在此基础上新建分支，修复完成后合并删除分支，修复完成后切换回dev分支，使用git stash list查看工作现场列表 </p>
+<p><code>git stash apply</code>: 恢复工作现场，保留stash文件 </p>
+<p><code>git stash pop</code>: 恢复工作分区，删除stash文件 </p>
+<h4 id="Feature分支："><a href="#Feature分支：" class="headerlink" title="Feature分支："></a>Feature分支：</h4><p>和Bug分支类似，没添加一个新功能，最好新建一个feature分支，然后在上面开发，完成后，合并并删除该分支 </p>
+<p><code>git branch -D &lt;name&gt;</code>: 强行删除分支 </p>
+<h4 id="推送分支："><a href="#推送分支：" class="headerlink" title="推送分支："></a>推送分支：</h4><p><code>git remote -v</code>: 查看远程仓库详细信息 </p>
+<p><code>git push origin &lt;branch&gt;</code>: 将该分支上的所有本地提交推送到远程库，推送的时候要指定本地分支 </p>
+<p>一般来说master和dev是要和远程保持一致，而其他分支则看情况 </p>
+<h4 id="抓取分支："><a href="#抓取分支：" class="headerlink" title="抓取分支："></a>抓取分支：</h4><ol>
+<li>首先，可以试图用<code>git push origin branch-name</code>推送自己的修改； </li>
+<li>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并； </li>
+<li>如果合并有冲突，则解决冲突，并在本地提交； </li>
+<li>没有冲突或者解决掉冲突后，再用<code>git push origin branch-name</code>推送就能成功！ </li>
+</ol>
+<p>如果<code>git pull</code>提示<code>“no tracking information”</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream branch-name origin/branch-name</code>。 </p>
+<p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。 </p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/17/码农杂谈/" rel="next" title="码农杂谈">
+                <i class="fa fa-chevron-left"></i> 码农杂谈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/21/MyBatis-笔记/" rel="prev" title="MyBatis 笔记">
+                MyBatis 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">welljun</p>
+              <p class="site-description motion-element" itemprop="description">不定期更新学习笔记</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行版"><span class="nav-number">1.</span> <span class="nav-text">命令行版</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤："><span class="nav-number">1.1.</span> <span class="nav-text">步骤：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本回退："><span class="nav-number">1.2.</span> <span class="nav-text">版本回退：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作区和暂存区："><span class="nav-number">1.3.</span> <span class="nav-text">工作区和暂存区：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销修改："><span class="nav-number">1.4.</span> <span class="nav-text">撤销修改：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除文件："><span class="nav-number">1.5.</span> <span class="nav-text">删除文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加远程仓库："><span class="nav-number">1.6.</span> <span class="nav-text">添加远程仓库：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从远程仓库克隆："><span class="nav-number">1.7.</span> <span class="nav-text">从远程仓库克隆：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支管理："><span class="nav-number">1.8.</span> <span class="nav-text">分支管理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决合并冲突："><span class="nav-number">1.9.</span> <span class="nav-text">解决合并冲突：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支管理策略："><span class="nav-number">1.10.</span> <span class="nav-text">分支管理策略：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bug分支："><span class="nav-number">1.11.</span> <span class="nav-text">Bug分支：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature分支："><span class="nav-number">1.12.</span> <span class="nav-text">Feature分支：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送分支："><span class="nav-number">1.13.</span> <span class="nav-text">推送分支：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抓取分支："><span class="nav-number">1.14.</span> <span class="nav-text">抓取分支：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">welljun</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
