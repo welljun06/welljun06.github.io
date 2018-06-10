@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="welljun&#39;s blog">
 <meta property="og:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-27T06:53:25.000Z">
+<meta property="og:updated_time" content="2018-06-03T15:16:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 笔记">
 <meta name="twitter:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
@@ -408,7 +408,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git:(master) ✗ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              e934aafc2206        2 weeks ago         199MB</span><br></pre></td></tr></table></figure>
 <p>通过<code>docker run -it --rm centos:latest /bin/bash</code>来启动容器==&gt;利用commit提交更新后的副本。</p>
 <ul>
-<li>-it：需要交互式终端，-rm：容器退出后随之删除 /bin/bash：希望启动bash</li>
+<li>-it：需要交互式终端，–rm：容器退出后随之删除 /bin/bash：希望启动bash</li>
 </ul>
 <p>使用<code>yum install git</code>安装git，使用<code>cat /etc/os-release</code>查看系统信息。</p>
 <p>退出容器使用exit</p>
@@ -564,7 +564,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -601,7 +601,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -656,7 +658,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

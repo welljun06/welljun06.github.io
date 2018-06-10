@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。 内置Java.lang注解：  @Override，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错 @Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息 @SuppressWarning，关闭不当的编译器警告信息，  基本语法从语法的角度来看，注解的使用">
-<meta name="keywords" content="Java">
+  <meta name="description" content="tensor数据结构tensor是一种数据结构，是n维空间的数据表达，这里的n被称为tensor的阶，如0阶是一个数，1阶是一个向量，二维就是一个矩阵，三维就是一个立方体">
+<meta name="keywords" content="编程语言,tensor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java注解">
-<meta property="og:url" content="http://yoursite.com/2018/03/24/Java注解/index.html">
+<meta property="og:title" content="tensor 笔记">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/tensor-笔记/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
-<meta property="og:description" content="注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。 内置Java.lang注解：  @Override，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错 @Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息 @SuppressWarning，关闭不当的编译器警告信息，  基本语法从语法的角度来看，注解的使用">
+<meta property="og:description" content="tensor数据结构tensor是一种数据结构，是n维空间的数据表达，这里的n被称为tensor的阶，如0阶是一个数，1阶是一个向量，二维就是一个矩阵，三维就是一个立方体">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T02:58:57.000Z">
+<meta property="og:updated_time" content="2018-06-03T11:53:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java注解">
-<meta name="twitter:description" content="注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。 内置Java.lang注解：  @Override，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错 @Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息 @SuppressWarning，关闭不当的编译器警告信息，  基本语法从语法的角度来看，注解的使用">
+<meta name="twitter:title" content="tensor 笔记">
+<meta name="twitter:description" content="tensor数据结构tensor是一种数据结构，是n维空间的数据表达，这里的n被称为tensor的阶，如0阶是一个数，1阶是一个向量，二维就是一个矩阵，三维就是一个立方体">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/24/Java注解/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/31/tensor-笔记/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Java注解 | welljun's blog</title>
+  <title>tensor 笔记 | welljun's blog</title>
   
 
 
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/Java注解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/tensor-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="welljun">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java注解</h1>
+          <h1 class="post-title" itemprop="name headline">tensor 笔记</h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T11:09:45+08:00">2018-03-24</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-31T23:13:24+08:00">2018-05-31</time>
             
 
             
@@ -351,6 +351,24 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -379,28 +397,7 @@
       
 
       
-        <p>注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。</p>
-<p>内置Java.lang注解：</p>
-<ul>
-<li>@<strong>Override</strong>，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错</li>
-<li>@<strong>Deprecated</strong>，如果程序员使用了注解为它的元素，那么编译器会发出警告信息</li>
-<li>@<strong>SuppressWarning</strong>，关闭不当的编译器警告信息，</li>
-</ul>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>从语法的角度来看，注解的使用方式几乎与修饰符的使用一模一样。</p>
-<h2 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h2><p>与其他Java接口类似，注解也会编译成class文件。</p>
-<ul>
-<li>@<strong>Target</strong>，定义注解将用于什么地方</li>
-<li>@<strong>Rectetion</strong>，定义该注解在哪一个级别使用</li>
-</ul>
-<h2 id="Spring注解"><a href="#Spring注解" class="headerlink" title="Spring注解"></a>Spring注解</h2><ul>
-<li>@Autowired，根据类型的自动注入依赖（基于注解的依赖注入），可以被使用在属性域，方法，和构造函数上</li>
-<li>@Qualifer，指定依赖的bean的id</li>
-</ul>
-<h2 id="Spring-Boot注解"><a href="#Spring-Boot注解" class="headerlink" title="Spring Boot注解"></a>Spring Boot注解</h2><ul>
-<li>@Configuration ，表示是一个JavaConfig配置类</li>
-<li>@EnableAutoConfiguration，将所有符合条件的bean定义加载到IOC容器</li>
-<li>@ComponentScan，对应xml配置中的元素，自动扫描并加载符合条件的组件或者是bean的定义最终将这些bean定义加载到Ioc容器中。</li>
-</ul>
+        <h3 id="tensor数据结构"><a href="#tensor数据结构" class="headerlink" title="tensor数据结构"></a>tensor数据结构</h3><p>tensor是一种数据结构，是n维空间的数据表达，这里的n被称为tensor的阶，如0阶是一个数，1阶是一个向量，二维就是一个矩阵，三维就是一个立方体</p>
 
       
     </div>
@@ -421,7 +418,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
+          
+            <a href="/tags/tensor/" rel="tag"># tensor</a>
           
         </div>
       
@@ -434,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/21/设计模式入门/" rel="next" title="设计模式入门">
-                <i class="fa fa-chevron-left"></i> 设计模式入门
+              <a href="/2018/05/31/Java-反射/" rel="next" title="Java 反射">
+                <i class="fa fa-chevron-left"></i> Java 反射
               </a>
             
           </div>
@@ -443,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/28/区块链入门/" rel="prev" title="区块链入门">
-                区块链入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -656,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法"><span class="nav-number">1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java注解"><span class="nav-number">2.</span> <span class="nav-text">Java注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring注解"><span class="nav-number">3.</span> <span class="nav-text">Spring注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot注解"><span class="nav-number">4.</span> <span class="nav-text">Spring Boot注解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tensor数据结构"><span class="nav-number">1.</span> <span class="nav-text">tensor数据结构</span></a></li></ol></div>
             
 
           </div>

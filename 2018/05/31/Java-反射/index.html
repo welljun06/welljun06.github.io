@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。 内置Java.lang注解：  @Override，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错 @Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息 @SuppressWarning，关闭不当的编译器警告信息，  基本语法从语法的角度来看，注解的使用">
-<meta name="keywords" content="Java">
+  <meta name="description" content="类加载器 当Java程序需要使用某个类的时候，如果该类没有被加载到内存中的时候，则系统会通过加载、链接、初始化来对这个类进行初始化  加载：将类加载至内存中，并为之创建一个Java对象，任何类在被使用的时候都会创建一个Class对象 链接：验证内部正确性，并与其他类协调一致，为类的静态成员分配内存，并设置默认值 初始化：类的初始化  类初始化时机  创建类的实例 访问类的静态方法，为静态变量赋值">
+<meta name="keywords" content="java,基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java注解">
-<meta property="og:url" content="http://yoursite.com/2018/03/24/Java注解/index.html">
+<meta property="og:title" content="Java 反射">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/Java-反射/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
-<meta property="og:description" content="注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。 内置Java.lang注解：  @Override，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错 @Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息 @SuppressWarning，关闭不当的编译器警告信息，  基本语法从语法的角度来看，注解的使用">
+<meta property="og:description" content="类加载器 当Java程序需要使用某个类的时候，如果该类没有被加载到内存中的时候，则系统会通过加载、链接、初始化来对这个类进行初始化  加载：将类加载至内存中，并为之创建一个Java对象，任何类在被使用的时候都会创建一个Class对象 链接：验证内部正确性，并与其他类协调一致，为类的静态成员分配内存，并设置默认值 初始化：类的初始化  类初始化时机  创建类的实例 访问类的静态方法，为静态变量赋值">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T02:58:57.000Z">
+<meta property="og:updated_time" content="2018-05-31T09:50:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java注解">
-<meta name="twitter:description" content="注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。 内置Java.lang注解：  @Override，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错 @Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息 @SuppressWarning，关闭不当的编译器警告信息，  基本语法从语法的角度来看，注解的使用">
+<meta name="twitter:title" content="Java 反射">
+<meta name="twitter:description" content="类加载器 当Java程序需要使用某个类的时候，如果该类没有被加载到内存中的时候，则系统会通过加载、链接、初始化来对这个类进行初始化  加载：将类加载至内存中，并为之创建一个Java对象，任何类在被使用的时候都会创建一个Class对象 链接：验证内部正确性，并与其他类协调一致，为类的静态成员分配内存，并设置默认值 初始化：类的初始化  类初始化时机  创建类的实例 访问类的静态方法，为静态变量赋值">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/24/Java注解/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/31/Java-反射/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Java注解 | welljun's blog</title>
+  <title>Java 反射 | welljun's blog</title>
   
 
 
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/Java注解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/Java-反射/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="welljun">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java注解</h1>
+          <h1 class="post-title" itemprop="name headline">Java 反射</h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T11:09:45+08:00">2018-03-24</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-31T17:48:58+08:00">2018-05-31</time>
             
 
             
@@ -351,6 +351,24 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -379,27 +397,43 @@
       
 
       
-        <p>注解为我们在代码中添加信息提供一种形式化的方法，使我们可以在稍后某个时刻非常方便地使用这些数据。</p>
-<p>内置Java.lang注解：</p>
+        <p><strong>类加载器</strong></p>
+<p>当Java程序需要使用某个类的时候，如果该类没有被加载到内存中的时候，则系统会通过加载、链接、初始化来对这个类进行初始化</p>
 <ul>
-<li>@<strong>Override</strong>，表示当前方法定义将覆盖超类中的方法，如果方法名对不上，编译器会报错</li>
-<li>@<strong>Deprecated</strong>，如果程序员使用了注解为它的元素，那么编译器会发出警告信息</li>
-<li>@<strong>SuppressWarning</strong>，关闭不当的编译器警告信息，</li>
+<li>加载：将类加载至内存中，并为之创建一个Java对象，任何类在被使用的时候都会创建一个Class对象</li>
+<li>链接：验证内部正确性，并与其他类协调一致，为类的静态成员分配内存，并设置默认值</li>
+<li>初始化：类的初始化</li>
 </ul>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>从语法的角度来看，注解的使用方式几乎与修饰符的使用一模一样。</p>
-<h2 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h2><p>与其他Java接口类似，注解也会编译成class文件。</p>
+<p><strong>类初始化时机</strong></p>
 <ul>
-<li>@<strong>Target</strong>，定义注解将用于什么地方</li>
-<li>@<strong>Rectetion</strong>，定义该注解在哪一个级别使用</li>
+<li>创建类的实例</li>
+<li>访问类的静态方法，为静态变量赋值</li>
+<li>使用类的静态方法</li>
+<li>使用反射来强制创建某个类或者接口对应的class类</li>
+<li>初始化某个类的子类</li>
 </ul>
-<h2 id="Spring注解"><a href="#Spring注解" class="headerlink" title="Spring注解"></a>Spring注解</h2><ul>
-<li>@Autowired，根据类型的自动注入依赖（基于注解的依赖注入），可以被使用在属性域，方法，和构造函数上</li>
-<li>@Qualifer，指定依赖的bean的id</li>
+<p><strong>什么是反射</strong></p>
+<ul>
+<li>在Java运行状态中，对于任何一个类来说，都能知道这个类的所有的属性和方法；对于任何一个对象，都能够调用任何的方法和属性；这样动态地获取新的以及动态调用对象的方法的功能就叫做反射。</li>
+<li>简单来说就是解剖一个类，前提是要获得这个类的Class对象</li>
 </ul>
-<h2 id="Spring-Boot注解"><a href="#Spring-Boot注解" class="headerlink" title="Spring Boot注解"></a>Spring Boot注解</h2><ul>
-<li>@Configuration ，表示是一个JavaConfig配置类</li>
-<li>@EnableAutoConfiguration，将所有符合条件的bean定义加载到IOC容器</li>
-<li>@ComponentScan，对应xml配置中的元素，自动扫描并加载符合条件的组件或者是bean的定义最终将这些bean定义加载到Ioc容器中。</li>
+<p><strong>如何使用反射</strong></p>
+<ul>
+<li>使用Class类，获取出被解剖的这个类的class文件对象</li>
+<li>使用Class类方法，获取出类中的所有成员</li>
+<li>将类成员获取出来后，交给对应类、方法执行成员</li>
+</ul>
+<p><strong>如何获取Class文件对象</strong></p>
+<ul>
+<li><p>使用类的对象获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person p1=<span class="keyword">new</span> Person();</span><br><span class="line">Class&lt;?&gt; cc=p1.getClass();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用类的静态属性获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; cc2=Person.class;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Class的静态方法获取（常用来加载数据库驱动）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; cc3=Class.forName(<span class="string">"com.test.demo.Person"</span>); <span class="comment">//全类名</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -421,7 +455,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
           
         </div>
       
@@ -434,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/21/设计模式入门/" rel="next" title="设计模式入门">
-                <i class="fa fa-chevron-left"></i> 设计模式入门
+              <a href="/2018/05/27/vim-快捷键/" rel="next" title="vim 快捷键">
+                <i class="fa fa-chevron-left"></i> vim 快捷键
               </a>
             
           </div>
@@ -444,8 +480,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/28/区块链入门/" rel="prev" title="区块链入门">
-                区块链入门 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/31/tensor-笔记/" rel="prev" title="tensor 笔记">
+                tensor 笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -495,17 +531,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -646,22 +673,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法"><span class="nav-number">1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java注解"><span class="nav-number">2.</span> <span class="nav-text">Java注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring注解"><span class="nav-number">3.</span> <span class="nav-text">Spring注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot注解"><span class="nav-number">4.</span> <span class="nav-text">Spring Boot注解</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

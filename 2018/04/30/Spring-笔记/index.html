@@ -99,18 +99,19 @@
 
 
 
-  <meta name="description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 单元测试 需要用到junit">
+  <meta name="description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 实现：读取标注或者配置文件，">
+<meta name="keywords" content="java,spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring 笔记">
 <meta property="og:url" content="http://yoursite.com/2018/04/30/Spring-笔记/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
-<meta property="og:description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 单元测试 需要用到junit">
+<meta property="og:description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 实现：读取标注或者配置文件，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fr7j1rov5lj30dv07nt93.jpg">
-<meta property="og:updated_time" content="2018-05-14T05:08:55.000Z">
+<meta property="og:updated_time" content="2018-05-31T10:10:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring 笔记">
-<meta name="twitter:description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 单元测试 需要用到junit">
+<meta name="twitter:description" content="概念 Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上 是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架  IoC控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。 DI(依赖注入)是其中的一种表现形式，目的是为了创建对象并组织对象的关系， 依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。 实现：读取标注或者配置文件，">
 <meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fr7j1rov5lj30dv07nt93.jpg">
 
 
@@ -384,9 +385,51 @@
 <li>Spring是一个开源框架，为了解决企业应用复杂性而创建的，现在不限于使用在企业应用上</li>
 <li>是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器框架</li>
 </ul>
-<h2 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h2><p>控制权交由第三方容器，应用程序本身不负责依赖对象的创建和维护。</p>
+<h3 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h3><p><strong>控制权</strong>交由第三方容器，应用程序本身不负责依赖对象的创建和维护。</p>
 <p><strong>DI(依赖注入)</strong>是其中的一种表现形式，目的是为了创建对象并组织对象的关系，</p>
 <p>依赖注入：在IoC容器运行的时候动态地将依赖关系注入到对象之中。</p>
+<p>实现：读取标注或者配置文件，看看依赖的是什么，然后拿到类名；使用反射API，基于类名实例化对应的对象实例；将对象实例化，通过构造函数或者setter传递</p>
+<p><strong>得到Spring容器对象</strong></p>
+<ul>
+<li><p>bean工厂，BeanFactory（功能简单）</p>
+<p>通过Resourse获取BeanFactory</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Resource resource = <span class="keyword">new</span> ClassPathResource(<span class="string">"applicationContext.xml"</span>); <span class="comment">// 加载spring配置文件</span></span><br><span class="line">BeanFactory beanFactory = <span class="keyword">new</span> XmlBeanFactory(resource); <span class="comment">// 创建IOC容器对象</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用上下文，ApplicationContext（功能强大）</p>
+<p>通过XML获取ApplicationContext</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>在Spring中有三种方法配置对象</strong></p>
+<ul>
+<li><p>使用XML文件配置</p>
+<p>获取IOC容器后，需要在applicationContext.xml中配置信息，使IOC容器根据xml文件来创建对象</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"User"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以通过IOC容器来创建对象了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User user = (User)ac.getBean(<span class="string">"user"</span>); <span class="comment">// 无参构造函数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用注解来配置</p>
+<p>简化IOC容器配置，注解可以把对象添加到IOC容器中、处理对象依赖关系</p>
+<p>步骤：</p>
+<ul>
+<li>引入context名称空间</li>
+<li>开启注解扫描器</li>
+</ul>
+<p>创建对象以及处理对象的依赖关系注解：</p>
+<p><code>@Componnent</code>：扫描器</p>
+<p><code>@Configuration</code>：配置类</p>
+<p><code>@Component</code>：指定一个对象加入ioc中</p>
+<p><code>@Repository</code>：在持久层使用</p>
+<p><code>@Service</code>：业务逻辑层使用</p>
+<p><code>@Controller</code>：在控制层使用</p>
+<p><code>@Resource</code>：依赖关系</p>
+</li>
+<li><p>使用JavaConfig来配置</p>
+<p>由于Spring的自动装配并不能将第三方的库装配到应用中，需要<strong>显式</strong>装配配置。</p>
+<p>编写Java类，使用<code>@Configuration</code>标注，并使用此类来创建bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Configuration</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用@Bean修饰方法，spring内部会将该对象加入ioc，id默认为方法名</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> UserDao <span class="title">userDao</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> 		UserDao userDao = <span class="keyword">new</span> UserDao();</span><br><span class="line">        <span class="keyword">return</span> userDao;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><ul>
 <li>需要用到junit类</li>
 <li>创建UnitTestBase类，完成对Spring配置文件的加载和销毁</li>
@@ -441,7 +484,8 @@
 <li>上一点中常常使用的是@configuration</li>
 </ul>
 <hr>
-<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>在软件开发中，散布于应用中多处的功能被称为横切关注点，这与业务逻辑是分离开的。</p>
+<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>简单理解：执行一些代码前需要执行另外的代码</p>
+<p>在软件开发中，散布于应用中多处的功能被称为横切关注点，这与业务逻辑是分离开的。</p>
 <p>把这些横切关注点与业务逻辑相分离正是面向切面编程(AOP)所要解决的问题。</p>
 <p>主要是实现横切关注点与它们所影响的对象之间的解耦。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fr7j1rov5lj30dv07nt93.jpg" alt="image-20180511172726347"></p>
@@ -475,6 +519,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
       
 
       
@@ -571,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -608,7 +660,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -663,7 +717,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -699,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC"><span class="nav-number">2.</span> <span class="nav-text">IoC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试"><span class="nav-number">2.1.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring注入"><span class="nav-number">2.2.</span> <span class="nav-text">Spring注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">3.</span> <span class="nav-text">Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置方式"><span class="nav-number">3.1.</span> <span class="nav-text">配置方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">3.2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">3.3.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aware"><span class="nav-number">3.4.</span> <span class="nav-text">Aware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动装配-Autowiring"><span class="nav-number">3.5.</span> <span class="nav-text">自动装配(Autowiring)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">3.6.</span> <span class="nav-text">Resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean管理的注解"><span class="nav-number">3.7.</span> <span class="nav-text">Bean管理的注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Qualifier"><span class="nav-number">3.7.1.</span> <span class="nav-text">@Qualifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean-1"><span class="nav-number">3.7.2.</span> <span class="nav-text">@Bean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">3.8.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-1"><span class="nav-number">3.8.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#术语"><span class="nav-number">3.8.2.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通知"><span class="nav-number">3.8.2.1.</span> <span class="nav-text">通知</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC"><span class="nav-number">1.1.</span> <span class="nav-text">IoC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试"><span class="nav-number">1.2.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring注入"><span class="nav-number">1.3.</span> <span class="nav-text">Spring注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">2.</span> <span class="nav-text">Bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置方式"><span class="nav-number">2.1.</span> <span class="nav-text">配置方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">2.2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aware"><span class="nav-number">2.4.</span> <span class="nav-text">Aware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动装配-Autowiring"><span class="nav-number">2.5.</span> <span class="nav-text">自动装配(Autowiring)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">2.6.</span> <span class="nav-text">Resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean管理的注解"><span class="nav-number">2.7.</span> <span class="nav-text">Bean管理的注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Qualifier"><span class="nav-number">2.7.1.</span> <span class="nav-text">@Qualifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean-1"><span class="nav-number">2.7.2.</span> <span class="nav-text">@Bean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">2.8.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-1"><span class="nav-number">2.8.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#术语"><span class="nav-number">2.8.2.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通知"><span class="nav-number">2.8.2.1.</span> <span class="nav-text">通知</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
