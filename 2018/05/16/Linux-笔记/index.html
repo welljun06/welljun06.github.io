@@ -99,18 +99,18 @@
 
 
 
-  <meta name="description" content="创建用户 useradd -d/usr/&amp;lt;username&amp;gt; -m &amp;lt;username&amp;gt; 设置密码 cd /usr/ passwd  设置用户权限 sudo vi /etc/sudoers 找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存 切换用户 su -l  Linux 下proc/PID/文件分析maps查看进程下的虚拟地址空间是如何使用的。 文件">
+  <meta name="description" content="创建用户 1$ useradd -d/usr/&amp;lt;username&amp;gt; -m &amp;lt;username&amp;gt; 设置密码 12$ cd /usr/&amp;lt;username&amp;gt;$ passwd &amp;lt;username&amp;gt; 设置用户权限 1$ sudo vi /etc/sudoers 找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存 切换用户 1$ su -l &amp;">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 笔记">
 <meta property="og:url" content="http://yoursite.com/2018/05/16/Linux-笔记/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
-<meta property="og:description" content="创建用户 useradd -d/usr/&amp;lt;username&amp;gt; -m &amp;lt;username&amp;gt; 设置密码 cd /usr/ passwd  设置用户权限 sudo vi /etc/sudoers 找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存 切换用户 su -l  Linux 下proc/PID/文件分析maps查看进程下的虚拟地址空间是如何使用的。 文件">
+<meta property="og:description" content="创建用户 1$ useradd -d/usr/&amp;lt;username&amp;gt; -m &amp;lt;username&amp;gt; 设置密码 12$ cd /usr/&amp;lt;username&amp;gt;$ passwd &amp;lt;username&amp;gt; 设置用户权限 1$ sudo vi /etc/sudoers 找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存 切换用户 1$ su -l &amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-27T15:01:57.000Z">
+<meta property="og:updated_time" content="2018-06-30T12:59:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 笔记">
-<meta name="twitter:description" content="创建用户 useradd -d/usr/&amp;lt;username&amp;gt; -m &amp;lt;username&amp;gt; 设置密码 cd /usr/ passwd  设置用户权限 sudo vi /etc/sudoers 找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存 切换用户 su -l  Linux 下proc/PID/文件分析maps查看进程下的虚拟地址空间是如何使用的。 文件">
+<meta name="twitter:description" content="创建用户 1$ useradd -d/usr/&amp;lt;username&amp;gt; -m &amp;lt;username&amp;gt; 设置密码 12$ cd /usr/&amp;lt;username&amp;gt;$ passwd &amp;lt;username&amp;gt; 设置用户权限 1$ sudo vi /etc/sudoers 找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存 切换用户 1$ su -l &amp;">
 
 
 
@@ -398,26 +398,25 @@
 
       
         <p>创建用户</p>
-<p><code>useradd -d/usr/&lt;username&gt; -m &lt;username&gt;</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> useradd -d/usr/&lt;username&gt; -m &lt;username&gt;</span><br></pre></td></tr></table></figure>
 <p>设置密码</p>
-<p>cd /usr/<username></username></p>
-<p>passwd <username></username></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd /usr/&lt;username&gt;</span><br><span class="line"><span class="meta">$</span> passwd &lt;username&gt;</span><br></pre></td></tr></table></figure>
 <p>设置用户权限</p>
-<p>sudo vi /etc/sudoers</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/sudoers</span><br></pre></td></tr></table></figure>
 <p>找到root用户，然后在其下编写自己用户的权限，之后使用:wq!保存</p>
 <p>切换用户</p>
-<p>su -l <username></username></p>
-<h3 id="Linux-下proc-PID-文件分析"><a href="#Linux-下proc-PID-文件分析" class="headerlink" title="Linux 下proc/PID/文件分析"></a>Linux 下proc/PID/文件分析</h3><h4 id="maps"><a href="#maps" class="headerlink" title="maps"></a>maps</h4><p>查看进程下的虚拟地址空间是如何使用的。</p>
-<p>文件分为6列：</p>
-<ul>
-<li>地址：</li>
-<li>权限</li>
-<li>偏移量</li>
-<li>设备</li>
-<li>节点</li>
-<li>路径</li>
-</ul>
-<h4 id="status"><a href="#status" class="headerlink" title="status"></a>status</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> su -l &lt;username&gt;</span><br></pre></td></tr></table></figure>
+<p>传输文件到远程服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> scp ~/local/file user@remote:~/file</span><br></pre></td></tr></table></figure>
+<p>添加运行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> chmod u+x file</span><br></pre></td></tr></table></figure>
+<p>解压文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> unzip FileName.zip</span><br></pre></td></tr></table></figure>
+<p>删除文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rm -rf dir</span><br></pre></td></tr></table></figure>
+<p>设置定时任务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo crontab -e/l</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -511,17 +510,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -536,7 +526,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -575,7 +565,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -636,7 +630,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -662,22 +664,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-下proc-PID-文件分析"><span class="nav-number">1.</span> <span class="nav-text">Linux 下proc/PID/文件分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maps"><span class="nav-number">1.1.</span> <span class="nav-text">maps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#status"><span class="nav-number">1.2.</span> <span class="nav-text">status</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

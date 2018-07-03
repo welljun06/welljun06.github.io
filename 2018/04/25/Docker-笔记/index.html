@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="welljun&#39;s blog">
 <meta property="og:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T15:16:08.000Z">
+<meta property="og:updated_time" content="2018-06-18T09:34:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 笔记">
 <meta name="twitter:description" content="概念 镜像：与虚拟机中的镜像类似，是包含有文件系统的面向Docker引擎的只读模板。提供运行环境。 容器：类似于轻量级的沙盒，相当于极简的Linux系统，以及运行在其中的应用程序。 仓库：镜像仓库，Docker存储镜像文件的地方。  安装安装完dmg文件后，使用docker -version查看Docker的信息 1234567891011121314151617181920➜  ~ git:(m">
@@ -435,8 +435,8 @@
 <p>加载镜像：<code>docker load -i centos.tar</code></p>
 <h3 id="容器的其他操作"><a href="#容器的其他操作" class="headerlink" title="容器的其他操作"></a>容器的其他操作</h3><p>将当前容器设置在后台运行：按下快捷键<code>ctrl+p ctrl+q</code></p>
 <p>设置容器后台启动：-d（此时所有的stdout会输出至log中，可以使用<code>docker logs container_id</code>查看）</p>
-<p>启动重启停止命令：start、restart、stop</p>
-<p>重新进入后台系统：attach</p>
+<p>启动重启停止命令：<code>start、restart、stop</code></p>
+<p>重新进入后台系统：<code>attach</code></p>
 <p>如果在run的时候没有添加-it参数，需要进入shell时：<code>docker container exec</code></p>
 <p>将文件从容器拷贝到本机：<code>docker container cp [containID]:[/path/to/file] .</code></p>
 <h3 id="仓库的基本操作"><a href="#仓库的基本操作" class="headerlink" title="仓库的基本操作"></a>仓库的基本操作</h3><p>将自己的镜像发布到DockerHub上</p>
@@ -564,7 +564,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -603,7 +603,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -664,7 +668,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
