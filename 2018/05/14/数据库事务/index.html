@@ -100,14 +100,14 @@
 
 
   <meta name="description" content="数据库事务简称为数据库管理执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。 一个数据库事务通常是包括了一个序列的读和写操作。  为数据库操作序列提供一个从失败中回复到正常转态的方法，同时提供了数据库即使在异常情况下也能保持一致性的方法。 当多个程序在并发访问数据库的时候，可以在这些应用程序中提供一个隔离方法，以防止彼此之间的操作互相干扰。  ACID性质原子性：事务作为一个整体被执行，包">
-<meta name="keywords" content="数据库">
+<meta name="keywords" content="spring,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库事务">
 <meta property="og:url" content="http://yoursite.com/2018/05/14/数据库事务/index.html">
 <meta property="og:site_name" content="welljun&#39;s blog">
 <meta property="og:description" content="数据库事务简称为数据库管理执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。 一个数据库事务通常是包括了一个序列的读和写操作。  为数据库操作序列提供一个从失败中回复到正常转态的方法，同时提供了数据库即使在异常情况下也能保持一致性的方法。 当多个程序在并发访问数据库的时候，可以在这些应用程序中提供一个隔离方法，以防止彼此之间的操作互相干扰。  ACID性质原子性：事务作为一个整体被执行，包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T05:42:29.000Z">
+<meta property="og:updated_time" content="2018-07-03T15:45:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库事务">
 <meta name="twitter:description" content="数据库事务简称为数据库管理执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。 一个数据库事务通常是包括了一个序列的读和写操作。  为数据库操作序列提供一个从失败中回复到正常转态的方法，同时提供了数据库即使在异常情况下也能保持一致性的方法。 当多个程序在并发访问数据库的时候，可以在这些应用程序中提供一个隔离方法，以防止彼此之间的操作互相干扰。  ACID性质原子性：事务作为一个整体被执行，包">
@@ -431,6 +431,7 @@
 <p> 设置数据库的隔离级别是在开启事务之前。隔离级别的设置只对当前的链接有效</p>
 </blockquote>
 <p>对于使用MySQL命令的窗口，一个窗口相当于一个链接，当前窗口设置的隔离级别只对当前窗口中的事务有效，对于JDBC操作数据库来说，一个connection对象相当于一个链接，而对于connection对象设置的隔离级别只对该connection有效，而与其他链接对象无关。</p>
+<h3 id="Spring事务管理接口介绍"><a href="#Spring事务管理接口介绍" class="headerlink" title="Spring事务管理接口介绍"></a>Spring事务管理接口介绍</h3><p>接口：</p>
 
       
     </div>
@@ -450,6 +451,8 @@
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
             <a href="/tags/数据库/" rel="tag"># 数据库</a>
           
@@ -550,7 +553,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -593,7 +596,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -662,7 +667,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -698,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID性质"><span class="nav-number">1.</span> <span class="nav-text">ACID性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的隔离操作"><span class="nav-number">2.</span> <span class="nav-text">事务的隔离操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID性质"><span class="nav-number">1.</span> <span class="nav-text">ACID性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的隔离操作"><span class="nav-number">2.</span> <span class="nav-text">事务的隔离操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring事务管理接口介绍"><span class="nav-number">3.</span> <span class="nav-text">Spring事务管理接口介绍</span></a></li></ol></div>
             
 
           </div>
