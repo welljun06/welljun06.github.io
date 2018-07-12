@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="welljun&#39;s blog">
 <meta property="og:description" content="记录LeetCode刷题心得 1. two sum Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-08T08:45:31.000Z">
+<meta property="og:updated_time" content="2018-07-10T09:28:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 记录">
 <meta name="twitter:description" content="记录LeetCode刷题心得 1. two sum Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and">
@@ -418,6 +418,9 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先找回文数，判断是不是质数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">primePalindrome</span><span class="params">(<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(N &lt; <span class="number">2</span> * pow(<span class="number">10</span>,<span class="number">8</span>) &amp;&amp; N &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(N == reverse(N) &amp;&amp; isPrime(N)) &#123;</span><br><span class="line">            <span class="keyword">return</span> N;</span><br><span class="line">        &#125;</span><br><span class="line">        N++;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">10_000_000</span> &lt; N &amp;&amp; N &lt; <span class="number">100_000_000</span>)</span><br><span class="line">            N = <span class="number">100_000_000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"找不到该数"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(N &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= (<span class="keyword">int</span>)Math.sqrt(N); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(N % i == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(N != <span class="number">0</span>) &#123;</span><br><span class="line">        res = res*<span class="number">10</span> + N % <span class="number">10</span>;</span><br><span class="line">        N /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>心得：这里注意会出现超时的问题，需要在八位数的时候直接跳到9位数，因为回文数除了11，其他的回文数都是单位数。</p>
+<h3 id="4-Add-Two-Numbers"><a href="#4-Add-Two-Numbers" class="headerlink" title="4. Add Two Numbers"></a>4. Add Two Numbers</h3><blockquote>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+</blockquote>
 
       
     </div>
@@ -462,6 +465,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/12/React-笔记/" rel="prev" title="React 笔记">
+                React 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,7 +542,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -651,7 +658,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -687,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-two-sum"><span class="nav-number">1.</span> <span class="nav-text">1. two sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Reverse-Integer"><span class="nav-number">2.</span> <span class="nav-text">2. Reverse Integer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Prime-Palindrome"><span class="nav-number">3.</span> <span class="nav-text">3. Prime Palindrome</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-two-sum"><span class="nav-number">1.</span> <span class="nav-text">1. two sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Reverse-Integer"><span class="nav-number">2.</span> <span class="nav-text">2. Reverse Integer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Prime-Palindrome"><span class="nav-number">3.</span> <span class="nav-text">3. Prime Palindrome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Add-Two-Numbers"><span class="nav-number">4.</span> <span class="nav-text">4. Add Two Numbers</span></a></li></ol></div>
             
 
           </div>
